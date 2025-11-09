@@ -1,0 +1,282 @@
+@startgantt
+
+
+' Lien d'accès à la documentation PlantUML : https://plantuml.com/fr/gantt-diagram
+' ------------------------------------------
+
+
+' ---------------------
+' PARAMETRE GENEREAUX :
+' ---------------------
+
+' Définition de la langue :
+' ------------------------
+language fr
+
+
+' Choix de l'échelle :
+' --------------------
+' Choix possible (daily est la valeur par défaut): daily, weekly, monthly, quartely, yearly
+printscale daily
+
+
+' Début du calendrier/projet :
+' ----------------------------
+Project starts 2025-11-1
+
+
+' -----------------------------------------
+' Définition des jours/séances de travail :
+' -----------------------------------------
+
+' Week-end : 
+' ----------
+sunday are closed
+saturday are closed
+
+' Jours sans séances :
+' --------------------
+wednesday are closed and are colored in LightGoldenRodYellow
+
+' Jours fériés :
+' --------------
+2025-11-11 are closed and are colored in LightCoral
+
+
+' -----------------------
+' DEFINIIION DES JALONS :
+' -----------------------
+
+' Date de début du projet :
+' -------------------------
+[**DEBUT PROJET KOTLIN MONSTER**] as [DebutProjet] happens at 2025-11-3 and is colored in Green
+
+' Date de fin du projet :
+' -----------------------
+[**FIN PROJET KOTLIN MONSTER**] as [FinProjet] happens at 2025-11-21 and is colored in OrangeRed
+Separator just at [FinProjet]'s end
+
+
+' -------------------
+' Autres évènements :
+' -------------------
+
+' Mini-Projet API REST Eurocoaster :
+' ----------------------------------
+[Mini-Projet API REST Eurocoaster] as [MiniProjetEurocoaster] starts 2025-11-24 and ends 2025-11-28 and is colored in Silver 
+
+' Formation à Angular :
+' ---------------------
+[Formation Angular] as [FormationAngular] starts 2025-12-1 and ends 2025-12-16 and is colored in MediumPurple
+
+' BTS Blanc :
+' -----------
+2025-12-18 to 2025-12-19 are colored in Purple
+[BTS BLANC] as [BtsBlanc] starts 2025-12-18 and ends 2025-12-19 and is colored in OrangeRed
+
+
+
+' ______________________________________________________
+'
+' LISTE DES TACHES ET DE LA CHARGE DE TRAVAIL ASSOCIEE :
+' ______________________________________________________
+
+
+' Dans cette section on défini l'ensemble des tâches des projets.
+' On aloue la charge de travail/durée pour chaque tâche.
+' Les tâches sont regroupées en étapes.
+
+
+' ---------------------------------------------------------
+' ETAPE - Préparation de l'environnement de développement :
+' ---------------------------------------------------------
+[**Préparation Environnement**] as [Env] requires 1 days and is colored in DimGray
+    [Configuration Git] as [ConfigGit] requires 1 day and is colored in DarkGray
+    [Installation outils] as [InstOutils] requires 1 day and is colored in Gray
+
+
+' Plannification des tâches de l'étape :
+' --------------------------------------
+ ' [Env] starts 2025-3-14 
+    [ConfigGit] starts at [Env]'s start
+    [InstOutils] starts at [Env]'s start
+
+
+' -----------------------------------------
+' ETAPE - Rédiger l'expression de besoins :
+' -----------------------------------------
+
+' Définition des tâches et de leurs durées :
+' ------------------------------------------
+[**Rédiger l'expression des besoins**] as [ExpressionBesoins] requires 1 days and is colored in Green
+    [Contextualisation] as [Context] requires 1 days and is colored in DarkSeaGreen
+    [Tracer le Diagramme de cas d'utilisation] as [UseCaseDiagram] requires 1 days and is colored in DarkSeaGreen
+        [Recenser les acteurs] as [Acteurs]  requires 1 days and is colored in GreenYellow
+        [Recenser les cas d'utilisation] as [CasUtilisation] requires 1 days and is colored in GreenYellow
+
+
+' Plannification des tâches de l'étape :
+' --------------------------------------
+'[ExpressionBesoins] starts 2025-3-14
+    [Context] starts at [ExpressionBesoins]'s start
+    [UseCaseDiagram] starts at [ExpressionBesoins]'s start    
+    [Acteurs] starts at [UseCaseDiagram]'s start
+    [CasUtilisation] starts at [UseCaseDiagram]'s start
+
+
+' ---------------------------------------
+' ETAPE - Rédiger le cahier des charges :
+' ---------------------------------------
+
+' Définition des tâches et de leurs durées :
+' ------------------------------------------
+[**Rédiger le cahier des charges**] as [CahierCharges] requires 2 days and is colored in DarkGreen
+    [Vocabulaire du domaine] as [VocaDomaine]  requires 1 days and is colored in OliveDrab
+    [Identifier les fonctionnalités] as [IdentifierFonctionnalites] requires 1 days and is colored in Olive
+    [Identifier les technologies] as [Techno] requires 1 days and is colored in DarkOliveGreen
+    [Gantt] as [Gantt] requires 1 days and is colored in Navy
+    [Maquettage] as [Maquette] requires 3 days and is colored in DarkBlue
+   
+
+
+' Plannification des tâches de l'étape :
+' --------------------------------------
+[CahierCharges] starts at [UseCaseDiagram]'s end  
+    [VocaDomaine] starts at [CahierCharges]'s start
+    [IdentifierFonctionnalites] starts at [CahierCharges]'s start
+    [Techno] starts at [CahierCharges]'s start
+    [Gantt] starts at [Techno]'s end
+    [Maquette] starts at [CahierCharges]'s start
+    
+'Separator just at [CahierCharges]'s end
+
+
+
+' --------------------
+' ETAPE - Conception :
+' --------------------
+
+' Définition des tâches et de leurs durées :
+' ------------------------------------------
+[**Conception**] as [Conception] requires 3 days and is colored in Purple
+    [Diagramme de classes] as [ArchAPI] requires 2 days and is colored in BlueViolet
+    [Conception de la BDD] as [ConceptionBDD] requires 2 days and is colored in DarkOrchid
+    [Tables endpoints] as [TablesEndpoints]  requires 1 days and is colored in BlueViolet
+
+
+
+' Plannification des tâches de l'étape :
+' --------------------------------------
+[Conception] starts at [Maquette]'s start
+    [ArchAPI] starts at [Conception]'s start
+    [ConceptionBDD] starts at [Conception]'s start
+    [TablesEndpoints] starts at [ConceptionBDD]'s end
+
+
+
+
+' ________________________________________________________________
+'
+' Développement des fonctionnalités principales & tests associés :
+' ________________________________________________________________
+
+[**Développement**] as [Dev] requires 7 days and is colored in DarkGoldenRod
+[Dev] starts at [TablesEndpoints]'s end
+
+    ' ------------------
+    ' ETAPE - SPRINT 1 :
+    ' ------------------
+
+    ' Définition des tâches et de leurs durées :
+    ' ------------------------------------------
+    [**Sprint 1**] as [Sprint1] requires 3 days and is colored in Orange
+        [Creation du projet] as [CreationProjet] requires 1 days and is colored in DimGray
+        [Réalisation de la vue] as [DevVue] requires 2 days and is colored in DarkCyan
+            [Structure du template] as [StructureTemplate] requires 1 days and is colored in LightBlue
+            [Création page home] as [DevPageHome] requires 3 days and is colored in LightBlue
+            [Création pages statiques] as [DevPagesStatiques] requires 3 days and is colored in LightBlue
+
+        [Entités & persistance] as [EntitesPersistance] requires 3 days and is colored in ForestGreen
+            [Création entités] as [DevEntite] requires 1 days and is colored in GreenYellow
+            [Implémentation des CRUD] as [DevCrud] requires 2 days and is colored in GreenYellow 
+
+    [**Tests & Validation**] as [TestsSprint1] is colored in DarkOrchid
+        [Tests fonctionnels] as [TestsFonctionnelsSprint1] requires 3 days and is colored in Violet
+        [Tests unitaires] as [TestsUnitaires] requires 3 days and is colored in MediumPurple    
+        [Correction des bugs] as [CorrectionsSprint1] requires 3 days and is colored in PaleVioletRed
+        
+
+    ' Plannification des tâches du sprint :
+    ' -------------------------------------
+    [Sprint1] starts at [Dev]'s start
+        [CreationProjet] starts at [Sprint1]'s start
+        
+        [DevVue] starts at [Sprint1]'s start
+            [StructureTemplate] starts at [DevVue]'s start
+            [DevPageHome] starts at [DevVue]'s start
+            [DevPagesStatiques] starts at [DevVue]'s start
+
+        [EntitesPersistance] starts at [Sprint1]'s start
+            [DevEntite] starts at [EntitesPersistance]'s start
+            [DevCrud] starts at [DevEntite]'s end
+
+    [TestsSprint1] starts at [Sprint1]'s start and ends at [Sprint1]'s end
+        [Tests fonctionnels] starts at [TestsSprint1]'s start
+        [TestsUnitaires] starts at [TestsSprint1]'s start    
+        [CorrectionsSprint1] starts at [TestsSprint1]'s start
+
+
+
+    ' ------------------
+    ' ETAPE - SPRINT 2 :
+    ' ------------------
+
+    ' Définition des tâches et de leurs durées :
+    ' ------------------------------------------
+     [**Sprint 2**] as [Sprint2] requires 3 days and is colored in Orange
+
+
+    ' Plannification des tâches du sprint :
+    ' -------------------------------------
+    [Sprint2] starts at [CorrectionsSprint1]'s end
+
+
+
+' ---------------------------------------
+' ETAPE - Implémentation de la sécurité :
+' ---------------------------------------
+' [**Implémentation Sécurité**] as [Securite] requires 7 days and is colored in Red
+'     [Authentification & autorisation] as [Auth] requires 3 days and is colored in DarkRed
+'     [Contrôles d'accès] as [Controles] requires 2 days and is colored in IndianRed
+'     [Chiffrement] as [Chiffrement] requires 2 days and is colored in OrangeRed
+
+
+' Plannification des tâches de l'étape :
+' --------------------------------------
+
+
+
+
+' Plannification des tâches de l'étape :
+' --------------------------------------
+
+
+@endgantt
+
+
+
+' -----------------------
+' CODE ANNEXE POUR AIDE :
+' -----------------------
+
+' Afficher tous les codes couleurs de PlantUml
+@startuml
+colors
+@enduml
+
+
+
+' Afficher les couleurs proches d'une couleur (exemple avec chocolate)
+@startuml
+colors pink
+@enduml
