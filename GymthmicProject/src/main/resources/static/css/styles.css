@@ -2,3 +2,23 @@ body {
     background-color: #F2EFE5;
 }
 
+header {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+nav {
+
+}
+
+ul {
+    /*border: 1px solid; /* changer la couleur de la bordure*/
+    border-radius: 50px; /* accentue la bordure*/
+    text-align: center; /* centre le texte*/
+    list-style-type: none; /* enlève les points devant*/
+    background-color: rgba(222, 195, 208, 0.5);
+}
+
+ul li a {
+    color: #696867;
+}
