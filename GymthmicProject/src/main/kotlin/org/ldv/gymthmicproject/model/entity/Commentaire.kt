@@ -3,6 +3,7 @@ package org.ldv.gymthmicproject.model.entity
 import java.time.LocalDate
 import jakarta.persistence.*
 
+@Entity
 class Commentaire (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // clé primaire auto générée
@@ -10,6 +11,11 @@ class Commentaire (
     var id : Int,
     var zone : String,
     var datePublication : LocalDate,
-    var dateModification : LocalDate
+    var dateModification : LocalDate,
+
+    @ManyToOne
+    @JoinColumn(name = "fk_utilisateur_id")
+    var utilisateur: Utilisateur? = null,
+
 ) {
 }
