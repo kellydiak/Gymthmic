@@ -22,7 +22,10 @@ class Produit (
     @JoinColumn(name = "fk_sous_categorie_id")
     var souscategorie : SousCategorie? = null,
 
-    // Association avec Commentaire
+    // Association maitre w/Commentaire
+    @OneToOne
+    @JoinColumn(name = "fk_commentaire_id")
+    var commentaire : Commentaire? = null
 
     ) {
 }

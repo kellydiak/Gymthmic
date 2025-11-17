@@ -20,7 +20,12 @@ class Commande (
 
     // Association avec Variante
     @ManyToMany(mappedBy = "commandes")
-    var variantes: MutableList<Variante> = mutableListOf()
+    var variantes: MutableList<Variante> = mutableListOf(),
+
+    // Association maitre avec Variante en passant par ligne commande
+    @OneToMany(mappedBy = "commande", orphanRemoval = true)
+    var lignecommandes : MutableList<LigneCommande> = mutableListOf()
+
 ){
 
 }

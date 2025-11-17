@@ -38,7 +38,11 @@ class Variante (
         joinColumns = [JoinColumn(name = "fk_variante_id")],
         inverseJoinColumns = [JoinColumn(name = "fk_commande_id")]
     )
-    var commandes: MutableList<Commande> = mutableListOf()
+    var commandes: MutableList<Commande> = mutableListOf(),
+
+    // association maitre avec commande en passant par ligne commande
+    @OneToMany(mappedBy = "variante", orphanRemoval = true)
+    var lignecommandes: MutableList<LigneCommande> = mutableListOf()
 
 ) {
 }

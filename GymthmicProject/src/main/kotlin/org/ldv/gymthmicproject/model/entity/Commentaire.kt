@@ -17,5 +17,9 @@ class Commentaire (
     @JoinColumn(name = "fk_utilisateur_id")
     var utilisateur: Utilisateur? = null,
 
+    // Association avec produit
+    @OneToOne(mappedBy = "commentaire",cascade = [CascadeType.ALL], orphanRemoval = true)
+    var produits : Produit? = null
+
 ) {
 }
