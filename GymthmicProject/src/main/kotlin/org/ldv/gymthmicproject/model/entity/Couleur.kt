@@ -7,7 +7,7 @@ class Couleur (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // clé primaire auto générée
     @Column(nullable = false)
-    var id : Long,
+    var id : Long? = null,
     var nom : String,
     var codeCouleur : String,
 

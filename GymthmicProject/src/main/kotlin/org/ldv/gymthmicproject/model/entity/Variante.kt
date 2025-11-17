@@ -7,7 +7,7 @@ class Variante (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // clé primaire auto générée
     @Column(nullable = false)
-    var id : Int,
+    var id : Int? = null,
     var estDisponible : Boolean,
     val lienImage : String,
 

@@ -8,7 +8,7 @@ class Commande (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // clé primaire auto générée
     @Column(nullable = false)
-    var id : Int,
+    var id : Int? = null,
     var statut : String,
     var dateCreation : LocalDate,
     var dateModification : LocalDate,

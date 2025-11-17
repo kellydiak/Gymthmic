@@ -7,7 +7,7 @@ class SousCategorie(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // clé primaire auto générée
     @Column(nullable = false)
-    var id : Int,
+    var id : Int? = null,
     var nom : String,
 
      //Association avec Produit

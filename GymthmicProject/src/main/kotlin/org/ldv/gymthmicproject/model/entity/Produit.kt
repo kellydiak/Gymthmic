@@ -8,7 +8,7 @@ class Produit (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // clé primaire auto générée
     @Column(nullable = false)
-    var id : Int,
+    var id : Int? = null,
     var nom : String,
     var description : String,
     val prix : Double,
