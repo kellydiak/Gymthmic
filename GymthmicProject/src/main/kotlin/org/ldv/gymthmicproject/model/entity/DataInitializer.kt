@@ -69,6 +69,7 @@ class DataInitializer (
             nom = "Rose clair",
             codeCouleur = "FFFFFF"
         )
+        couleurDAO.saveAll(listOf(blanc, rose))
 
         // === Tailles ===
 
@@ -79,18 +80,24 @@ class DataInitializer (
         val tailleML = Taille (
             nom = "ML"
         )
+        tailleDAO.saveAll(listOf(tailleSM, tailleML))
 
         // === Variantes ===
-
-
+        val var1 = Variante (
+            estDisponible = true,
+            lienImage = "..."
+        )
+        varianteDAO.saveAll(listOf(var1))
 
         // === Commentaires ===
         val comGentil = Commentaire (
             zone = "Justaucorps magnifique",
-            datePublication = LocalDate(2026,5,2),
-            dateModification = LocalDate(2025,1,30)
+            datePublication = LocalDate.of(2026,5,2),
+            dateModification = LocalDate.of(2025,1,30)
         )
+        commentaireDAO.saveAll(listOf(comGentil))
 
+        println("✅ Données initiales insérées : ${categorieDAO.count()} catégories, ${produitDAO.count()} produits, ${couleurDAO.count()} couleurs, ${tailleDAO.count()} tailles, ${varianteDAO.count()} variantes, ${commentaireDAO.count()} commentaires")
 
     }
 
