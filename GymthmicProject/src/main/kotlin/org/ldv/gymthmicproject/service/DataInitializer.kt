@@ -4,27 +4,36 @@ import org.ldv.gymthmicproject.model.dao.CategorieDAO
 import org.ldv.gymthmicproject.model.dao.CommentaireDAO
 import org.ldv.gymthmicproject.model.dao.CouleurDAO
 import org.ldv.gymthmicproject.model.dao.ProduitDAO
+import org.ldv.gymthmicproject.model.dao.RoleDAO
 import org.ldv.gymthmicproject.model.dao.TailleDAO
+import org.ldv.gymthmicproject.model.dao.UtilisateurDAO
 import org.ldv.gymthmicproject.model.dao.VarianteDAO
 import org.ldv.gymthmicproject.model.entity.Categorie
 import org.ldv.gymthmicproject.model.entity.Commentaire
 import org.ldv.gymthmicproject.model.entity.Couleur
 import org.ldv.gymthmicproject.model.entity.Produit
+import org.ldv.gymthmicproject.model.entity.Role
 import org.ldv.gymthmicproject.model.entity.Taille
+import org.ldv.gymthmicproject.model.entity.Utilisateur
 import org.ldv.gymthmicproject.model.entity.Variante
 import org.springframework.boot.CommandLineRunner
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Component
 import java.time.LocalDate
 
 @Component
 class DataInitializer (
-    private val categorieDAO : CategorieDAO,
+    private val categorieDAO: CategorieDAO,
     private val produitDAO: ProduitDAO,
     private val couleurDAO: CouleurDAO,
     private val tailleDAO: TailleDAO,
     private val varianteDAO: VarianteDAO,
-    private val commentaireDAO : CommentaireDAO
+    private val commentaireDAO: CommentaireDAO,
+    val passwordEncoder: PasswordEncoder,
+    private val roleDAO: RoleDAO,
+    private val utilisateurDAO: UtilisateurDAO
 ) : CommandLineRunner {
+
 
     override fun run(vararg args: String?) {
         // Vérifie si la base contient déjà des données
@@ -34,6 +43,35 @@ class DataInitializer (
         }
 
         println("🚀 Initialisation des données...")
+
+        // == Rôles ==
+        val roleAdmin = Role(
+            nom = "ADMIN"
+        )
+
+        val roleClient = Role(
+            nom = "CLIENT"
+        )
+
+        roleDAO.saveAll(listOf(roleAdmin, roleClient))
+
+        // === Utilisateurs ===
+        val admin = Utilisateur(
+            id = null,
+            nom = "SuperKelly",
+            email = "admin@admin.com",
+            mdp = passwordEncoder.encode("admin123"), // mot de passe hashé
+            role = roleAdmin
+        )
+
+        val client = Utilisateur(
+            id = null,
+            nom = "Maili",
+            email = "client@client.com",
+            mdp = passwordEncoder.encode("client123"), // mot de passe hashé
+            role = roleClient
+        )
+        utilisateurDAO.saveAll(listOf(admin, client))
 
         // === Catégories ===
         val catJustaucorps = Categorie(nom = "justaucorps")
