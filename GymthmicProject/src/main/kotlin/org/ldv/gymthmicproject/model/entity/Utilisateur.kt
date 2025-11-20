@@ -2,7 +2,12 @@ package org.ldv.gymthmicproject.model.entity
 
 import java.time.LocalDate
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
+/**
+ * Entité représentant un utilisateur en base de données.
+ * Elle est mappée sur une table SQL grâce à l’annotation @Entity.
+ */
 @Entity //représentation d'une table dans la BDD
 class Utilisateur (
     @Id // Primary key
@@ -11,8 +16,20 @@ class Utilisateur (
     var id : Int?,
     var nom : String,
     var email : String,
+    /**
+     * Mot de passe de l'utilisateur.
+     * ⚠️ À stocker obligatoirement hashé (BCrypt) !
+     */
     var mdp : String,
-    val dateCreation : LocalDate,
+    /**
+     * Date de création de l’enregistrement.
+     * - initialisée automatiquement lors de la création
+     * - non modifiable après insertion (updatable = false)
+     */
+    @Column(nullable = false, updatable = false)
+    val dateCreation : LocalDateTime = LocalDateTime.now(),
+
+
 
     // Association avec Role
     @ManyToOne
@@ -32,6 +49,6 @@ class Utilisateur (
     var variantes: MutableList<Variante> = mutableListOf(),
 
 
-){
+    ){
 
 }

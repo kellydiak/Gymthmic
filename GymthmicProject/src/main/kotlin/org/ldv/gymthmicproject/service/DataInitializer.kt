@@ -1,4 +1,4 @@
-package org.ldv.gymthmicproject.model.entity
+package org.ldv.gymthmicproject.service
 
 import org.ldv.gymthmicproject.model.dao.CategorieDAO
 import org.ldv.gymthmicproject.model.dao.CommentaireDAO
@@ -6,6 +6,12 @@ import org.ldv.gymthmicproject.model.dao.CouleurDAO
 import org.ldv.gymthmicproject.model.dao.ProduitDAO
 import org.ldv.gymthmicproject.model.dao.TailleDAO
 import org.ldv.gymthmicproject.model.dao.VarianteDAO
+import org.ldv.gymthmicproject.model.entity.Categorie
+import org.ldv.gymthmicproject.model.entity.Commentaire
+import org.ldv.gymthmicproject.model.entity.Couleur
+import org.ldv.gymthmicproject.model.entity.Produit
+import org.ldv.gymthmicproject.model.entity.Taille
+import org.ldv.gymthmicproject.model.entity.Variante
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
 import java.time.LocalDate
@@ -56,7 +62,7 @@ class DataInitializer (
             prix = 149.99
         )
 
-        produitDAO.saveAll(listOf(produitJustaucorps,produitShort,produitJustaucorps)) // sauvegarde des produits
+        produitDAO.saveAll(listOf(produitJustaucorps,produitShort,produitManique)) // sauvegarde des produits
 
         // === Couleurs ===
 
@@ -73,27 +79,27 @@ class DataInitializer (
 
         // === Tailles ===
 
-        val tailleSM = Taille (
+        val tailleSM = Taille(
             nom = "SM"
         )
 
-        val tailleML = Taille (
+        val tailleML = Taille(
             nom = "ML"
         )
         tailleDAO.saveAll(listOf(tailleSM, tailleML))
 
         // === Variantes ===
-        val var1 = Variante (
+        val var1 = Variante(
             estDisponible = true,
             lienImage = "..."
         )
         varianteDAO.saveAll(listOf(var1))
 
         // === Commentaires ===
-        val comGentil = Commentaire (
+        val comGentil = Commentaire(
             zone = "Justaucorps magnifique",
-            datePublication = LocalDate.of(2026,5,2),
-            dateModification = LocalDate.of(2025,1,30)
+            datePublication = LocalDate.of(2026, 5, 2),
+            dateModification = LocalDate.of(2025, 1, 30)
         )
         commentaireDAO.saveAll(listOf(comGentil))
 

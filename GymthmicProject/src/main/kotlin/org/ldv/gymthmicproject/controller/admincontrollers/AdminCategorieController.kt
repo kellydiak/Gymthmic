@@ -17,10 +17,10 @@ class AdminCategorieController (val categorieDAO: CategorieDAO) {
         // manque qqch
         return "pageAdmin/categorie/indexCategorie"
     }
-    @GetMapping("/GymthmicProject/admin/categories/{id}")
-    open fun show(@PathVariable id : Int, model: Model ) : String {
-
-
-    }
+//    @GetMapping("/GymthmicProject/admin/categories/{id}")
+//    open fun show(@PathVariable id : Int, model: Model ) : String {
+//
+//
+//    }
 
 }
