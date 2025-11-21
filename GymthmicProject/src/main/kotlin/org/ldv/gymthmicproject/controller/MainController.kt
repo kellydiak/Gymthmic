@@ -24,8 +24,8 @@ class MainController (){
         return "pagesVisiteur/login"
     }
 
+    @GetMapping("/GymthmicProject/profil")
     fun profile(authentication: Authentication): String {
-
         // Récupération des rôles (authorities) de l’utilisateur connecté
         val roles = authentication.authorities.map { it.authority }
 
