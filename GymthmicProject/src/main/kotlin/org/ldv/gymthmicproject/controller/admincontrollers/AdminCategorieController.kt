@@ -2,6 +2,7 @@ package org.ldv.gymthmicproject.controller.admincontrollers
 
 
 import org.ldv.gymthmicproject.model.dao.CategorieDAO
+import org.ldv.gymthmicproject.model.entity.Categorie
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,5 +24,12 @@ class AdminCategorieController (val categorieDAO: CategorieDAO) {
         model.addAttribute("categorie", uneCategorie)
         return "pageAdmin/categorie/showCategorie"
   }
+
+    //@GetMapping("/GymthmicProject/admin/categories/create")
+    open fun create (model: Model) : String {
+        var nouvelleCategorie = Categorie(nom = "")
+        model.addAttribute("categorie", nouvelleCategorie)
+        return "pageAdmin/categorie/createCategorie"
+    }
 
 }
