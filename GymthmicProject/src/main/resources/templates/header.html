@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <!--    <title>Title</title>-->
+    <!-- IMPORTATION ICONS DE GOOGLE-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
@@ -32,9 +33,18 @@
 
             </div>
             <div class="d-flex align-items-center ms-auto">
+                <div sec:authorize="isAuthenticated()" class="nav-item">
+                    <form action="/GymthmicProject/logout" method="post">
+                        <button class="btn btn-link ms-2">
+                            <span class="material-icons">logout</span>
+                        </button>
+                    </form>
+                </div>
+                <button sec:authorize="isAnonymous()" type="button" class="btn btn-outline-primary me-2"> Login </button>
+                <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary"> Inscription </button>
                 <a class="navbar-brand" href="#">N</a>
                 <a class="navbar-brand" href="#">X</a>
-                <div sec:authorize="isAuthenticated()" class=""></div>
+
             </div>
         </nav>
 
