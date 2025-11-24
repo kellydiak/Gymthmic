@@ -34,7 +34,7 @@ class MainController (){
             return "redirect:/GymthmicProject/admin/dashboard"
         }
 
-        // Sinon → on affiche la page profile
+        // Sinon → on affiche la page profil
         return "pagesClient/profil"
     }
 
