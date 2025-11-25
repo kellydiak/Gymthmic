@@ -2,8 +2,8 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <!-- IMPORTATION ICONS DE GOOGLE-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -35,12 +35,19 @@
             <div class="d-flex align-items-center ms-auto">
                 <div sec:authorize="isAuthenticated()" class="nav-item">
                     <form action="/GymthmicProject/logout" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                         <button class="btn btn-link ms-2">
-                            <span class="material-icons">logout</span>
+                            <span class="material-symbols-outlined">logout</span>
                         </button>
                     </form>
                 </div>
-                <button sec:authorize="isAnonymous()" type="button" class="btn btn-outline-primary me-2"> Login </button>
+
+                <div sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="btn btn-outline-primary me-2" th:href="@{/GymthmicProject/login}">
+                        Login
+                    </a>
+                </div>
+
                 <button sec:authorize="isAnonymous()" type="button" class="btn btn-primary"> Inscription </button>
                 <a class="navbar-brand" href="#">N</a>
                 <a class="navbar-brand" href="#">X</a>

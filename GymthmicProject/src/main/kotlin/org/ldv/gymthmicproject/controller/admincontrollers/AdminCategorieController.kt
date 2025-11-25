@@ -26,10 +26,10 @@ class AdminCategorieController (val categorieDAO: CategorieDAO) {
   }
 
     //@GetMapping("/GymthmicProject/admin/categories/create")
-    open fun create (model: Model) : String {
-        var nouvelleCategorie = Categorie(nom = "")
-        model.addAttribute("categorie", nouvelleCategorie)
-        return "pageAdmin/categorie/createCategorie"
-    }
+//    open fun create (model: Model) : String {
+//        var nouvelleCategorie = Categorie(nom = "")
+//        model.addAttribute("categorie", nouvelleCategorie)
+//        return "pageAdmin/categorie/createCategorie"
+//    }
 
 }
