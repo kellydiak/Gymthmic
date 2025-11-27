@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html th:replace="base :: html" lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Page de connexion</title>
+    <title>connexion</title>
 </head>
-<body>
-<div class="col-8 col-lg-6 mx-auto p-2  mt-3">
-    <form action="/GymthmicProject/login" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-        <h1>Login</h1>
-        <!-- Affiche le message d'erreur si l'attribut "error" est présent dans le modèle -->
-        <p th:if="${error}" class="alert alert-danger">Identifiants incorrects. Veuillez réessayer.</p>
-        <div class="mb-3">
-            <label for="username">Email</label>
-            <input required class="form-control" id="username" name="username" type="text">
+<div th:fragment="content">
+    <main class="py-5">
+        <div class="container">
+            <div class="col-8 col-lg-6 mx-auto p-2  mt-3">
+                <form action="/GymthmicProject/login" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    <h1>Login</h1>
+                    <!-- Affiche le message d'erreur si l'attribut "error" est présent dans le modèle -->
+                    <p th:if="${error}" class="alert alert-danger">Identifiants incorrects. Veuillez réessayer.</p>
+                    <div class="mb-3">
+                        <label for="username">Email</label>
+                        <input required class="form-control" id="username" name="username" type="text">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Mdp</label>
+                        <input required class="form-control" id="password" name="password" type="password">
+                    </div>
+                    <button class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="password">Mdp</label>
-            <input required class="form-control" id="password" name="password" type="password">
-        </div>
-        <button class="btn btn-primary">Envoyer</button>
-    </form>
+    </main>
 </div>
-
-</body>
 </html>
