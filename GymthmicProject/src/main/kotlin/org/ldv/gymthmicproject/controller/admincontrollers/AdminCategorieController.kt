@@ -25,11 +25,13 @@ class AdminCategorieController (val categorieDAO: CategorieDAO) {
         return "pageAdmin/categorie/showCategorie"
   }
 
-    //@GetMapping("/GymthmicProject/admin/categories/create")
-//    open fun create (model: Model) : String {
-//        var nouvelleCategorie = Categorie(nom = "")
-//        model.addAttribute("categorie", nouvelleCategorie)
-//        return "pageAdmin/categorie/createCategorie"
-//    }
+    @GetMapping("/GymthmicProject/admin/categories/create")
+    open fun create (model: Model) : String {
+        var nouvelleCategorie = Categorie(nom = "")
+        var categories = categorieDAO.findAll()
+        model.addAttribute("categories", categories)
+        model.addAttribute("categorie", nouvelleCategorie)
+        return "pageAdmin/categorie/createCategorie"
+    }
 
 }
